@@ -1,0 +1,11 @@
+[package]
+name = "rust_wasm"
+version = "0.1.0"
+authors = ["Charles King <cking@weedmaps.com>"]
+
+[dependencies]
+[dependencies.wasm-bindgen]
+git = "https://github.com/alexcrichton/wasm-bindgen"
+rev = "c51a342cb3ef27d176d5713084d05ac04963b6db"
+[lib]
+crate-type = ["cdylib"]

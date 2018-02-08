@@ -1,0 +1,24 @@
+{
+  "name": "rust-wasm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:bringking/rust-wasm.git",
+  "author": "Charles King <bringking@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build_wasm_release": "cargo build --release --target wasm32-unknown-unknown",
+    "build_wasm_binary": "wasm-bindgen target/wasm32-unknown-unknown/release/rust_wasm.wasm  --out-dir dist/",
+    "build_wasm_interop": "wasm2es6js ./dist/rust_wasm_wasm.wasm -o ./dist/rust_wasm_wasm.js --base64",
+    "build_wasm": "npm run build_wasm_release && npm run build_wasm_binary && npm run build_wasm_interop",
+    "start": "npm run build_wasm && parcel index.html"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.5.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1"
+  }
+}
