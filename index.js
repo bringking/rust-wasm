@@ -16,6 +16,7 @@ class App extends Component {
     booted.then(() => {
       const listingOne = Listing.new('The Downtown Dispensary', LatLng.new(32.228086, -110.96811));
       const listingTwo = Listing.new('Botanica', LatLng.new(32.31976, -111.04795));
+      window.listingOne = listingOne;
       this.setState({listingOne, listingTwo});
     });
   }
@@ -34,16 +35,18 @@ class App extends Component {
        return <div>Booting WASM....</div>
      }
 
-    return (<div>
-      <h1>{listingOne.get_name()}</h1>
-      <h2>{listingOne.get_location().to_json()}</h2>
-      <hr/>
-      <h1>{listingTwo.get_name()}</h1>
-      <h2>{listingTwo.get_location().to_json()}</h2>
+    return (
       <div>
-        We are {listingOne.distance_to(listingTwo)} away from each other!
+          <h1>{listingOne.name()}</h1>
+          <h2>{listingOne.location().to_json()}</h2>
+          <hr/>
+          <h1>{listingTwo.name()}</h1>
+          <h2>{listingTwo.location().to_json()}</h2>
+          <div>
+            We are {listingOne.distance_to(listingTwo)} away from each other!
+          </div>
       </div>
-    </div>);
+    );
   }
 }
 
